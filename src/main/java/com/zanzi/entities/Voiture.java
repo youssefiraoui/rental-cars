@@ -1,8 +1,12 @@
 package com.zanzi.entities;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
+
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +24,7 @@ public class Voiture {
 	private String boiteAvitesse;
 	private String carburant;
 	private Double prix;
-	@OneToMany(mappedBy="voiture")
+	@OneToMany(mappedBy="voiture",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private Collection<Image> images;
 	public Long getId() {
 		return id;
@@ -83,6 +87,16 @@ public class Voiture {
 	public Voiture() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		String test="";
+		images.forEach(c->{
+			System.out.println(c.getChemin());
+		});
+		return "Voiture [id=" + id + ", nom=" + nom + ", description=" + description + ", couleur=" + couleur
+				+ ", boiteAvitesse=" + boiteAvitesse + ", carburant=" + carburant + ", prix=" + prix + ", images="
+				+ images.size() + "]";
 	}
 	
 	

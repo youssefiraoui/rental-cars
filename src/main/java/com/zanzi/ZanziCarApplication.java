@@ -32,11 +32,22 @@ public class ZanziCarApplication implements CommandLineRunner {
 		Voiture v2 = voitureRepository.save(new Voiture("mercediss", "haja mli7ach", "khder-9ahwi", "man", "lisanse", 505400.00));		
         
 		Image i1 = new Image("test1.jpg");
+		Image i3 = new Image("iraoui.jpg");
 		Image i2 = new Image("test2.jpg");
 		i1.setVoiture(v1);
 		i2.setVoiture(v2);
+		i3.setVoiture(v2);
 		imageRepository.save(i1);
 		imageRepository.save(i2);
+		imageRepository.save(i3);
+		
+		voitureRepository.findAll().forEach(c->{
+			System.out.println(c.toString());
+		});
+		System.out.println("---------------------");
+		voitureRepository.findAllVoitures().forEach(c->{
+			System.out.println(c.toString());
+		});
 	
 	}
 }

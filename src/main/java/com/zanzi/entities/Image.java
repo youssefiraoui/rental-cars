@@ -42,6 +42,10 @@ public class Image {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Image [id=" + id + ", chemin=" + chemin + ", voiture=" + voiture + ", offre=" + offre + "]";
+	}
 	
 	
 	
